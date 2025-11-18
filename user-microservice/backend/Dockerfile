@@ -6,7 +6,6 @@ COPY package*.json ./
 RUN npm install
 
 COPY . .
-COPY grpc-server.js ./
 
 EXPOSE 50051
 EXPOSE 5000
