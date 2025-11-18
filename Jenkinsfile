@@ -5,7 +5,7 @@ pipeline {
         DOCKER_USER_ID = "yassinehriz"
         TAG_NAME = "build-${BUILD_NUMBER}"
         DOCKER_CREDENTIAL_ID = "dockerhub-creds"
-        K8S_MANIFESTS_PATH = "k8s"
+        K8S_MANIFESTS_PATH = "user-microservice/k8s"
     }
 
     stages {
@@ -23,7 +23,7 @@ pipeline {
                 script {
                     def BACK_IMAGE = "${DOCKER_USER_ID}/backend-user-microservice:${TAG_NAME}"
                     echo "Construction de l'image Back-end: ${BACK_IMAGE}"
-                    sh "docker build -t ${BACK_IMAGE} ./backend" 
+                    sh "docker build -t ${BACK_IMAGE} ./user-microservice/backend" 
                 }
             }
         }
@@ -46,7 +46,7 @@ pipeline {
                 script {
                     def FRONT_IMAGE = "${DOCKER_USER_ID}/frontend-user-microservice:${TAG_NAME}"
                     echo "Construction de l'image Front-end: ${FRONT_IMAGE}"
-                    sh "docker build -t ${FRONT_IMAGE} ./microservice-frontend" 
+                    sh "docker build -t ${FRONT_IMAGE} ./user-microservice/frontend" 
                 }
             }
         }
