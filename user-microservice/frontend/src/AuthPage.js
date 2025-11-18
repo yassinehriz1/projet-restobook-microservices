@@ -29,7 +29,7 @@ function AuthPage() {
       return;
     }
 
-    const API_URL = "http://user.local";
+    const API_URL = "http://user.local/api";
     const url = isLogin 
       ? `${API_URL}/auth/login`
       : `${API_URL}/auth/register`;

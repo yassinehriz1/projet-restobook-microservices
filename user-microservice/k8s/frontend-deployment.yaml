@@ -21,5 +21,5 @@ spec:
          - containerPort: 80
          env:
           -  name: BACKEND_URI
-             value: http://backend-user-service:5001/auth/login
+             value: http://backend-user-service:5000/auth/login
 

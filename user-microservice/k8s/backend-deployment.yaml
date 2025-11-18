@@ -23,6 +23,6 @@ spec:
             - containerPort: 5000
           env:
             - name: MONGO_URI
-              value: mongodb://admin:pass@mongo-user-service:27018/catalogue?replicaSet=rs0&authSource=admin
+              value: mongodb://admin:pass@mongo-user-service:27017/user?replicaSet=rsUser&authSource=admin
             - name: SECRET_KEY
               value: my_secret_key
