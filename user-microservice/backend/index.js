@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const loginRoute = require("./routes/login")
 const registerRoute = require("./routes/register")
+const grpcServer = require('./grpc-server'); 
 require("dotenv").config();
 
 const PORT = 5000;
@@ -27,3 +28,6 @@ app.use('/api/auth',loginRoute)
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server listening to the PORT : ${PORT}`);
 });
+
+
+grpcServer.start();

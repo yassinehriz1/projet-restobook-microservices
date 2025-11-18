@@ -6,6 +6,10 @@ spec:
   selector:
     app: backend-user-pod
   ports:
-    - port: 5000
+    - name: http
+      port: 5000
       targetPort: 5000
+    - name: grpc
+      port: 50051
+      targetPort: 50051
   type: ClusterIP
