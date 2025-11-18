@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const loginRoute = require("./routes/login")
 const registerRoute = require("./routes/register")
-const grpcServer = require('./grpc-server'); 
+const grpcServer = require('./grpc/grpc-server.js'); 
 require("dotenv").config();
 
 const PORT = 5000;

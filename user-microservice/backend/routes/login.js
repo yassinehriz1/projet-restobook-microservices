@@ -3,7 +3,7 @@ const User = require("../models/user.model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
-const { notifyUserConnected } = require('../grpc-server');
+const { notifyUserConnected } = require('../grpc/grpc-server.js');
 
 router.post('/login', async (req, res, next) => {
     const { username, password } = req.body;
