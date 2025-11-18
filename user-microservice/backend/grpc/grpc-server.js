@@ -18,12 +18,13 @@ function notifyUserConnected(username) {
   subscribers.forEach(call => call.write({ username }));
 }
 
-const server = new grpc.Server();
-server.addService(userProto.UserService.service, { UserConnectedStream });
-server.bindAsync('0.0.0.0:50051', grpc.ServerCredentials.createInsecure(), () => {
-  server.start();
-  console.log("User gRPC server running on 50051");
-});
+function start() {
+  const server = new grpc.Server();
+  server.addService(userProto.UserService.service, { UserConnectedStream });
+  server.bindAsync('0.0.0.0:50051', grpc.ServerCredentials.createInsecure(), () => {
+    server.start();
+    console.log("User gRPC server running on 50051");
+  });
+}
 
-
-module.exports = { start, notifyUserConnected };
+module.exports = { start, notifyUserConnected };  
