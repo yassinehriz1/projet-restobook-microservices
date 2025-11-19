@@ -9,10 +9,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use('/api/products', productRoutes);
-app.use('/api/currentUser', (req, res) => {
-  res.json({ message: "hello" });
-});
-
+app.get('/api/currentUser', (req, res) => {
+  res.send('Hello World!')
+})
 mongoose.connect("mongodb://admin:pass@mongodb-statefulset-0.mongo-service:27017,mongodb-statefulset-1.mongo-service:27017/catalogue?replicaSet=rs0&authSource=admin")
   .then(() => console.log('✅ Connected to MongoDB'))
   .catch(err => console.error('❌ MongoDB connection failed:', err));
