@@ -9,9 +9,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use('/api/products', productRoutes);
-app.get('/api/current-user', (req, res) => {
-  res.json({message : "hello"})
-});
 
 
 mongoose.connect("mongodb://admin:pass@mongodb-statefulset-0.mongo-service:27017,mongodb-statefulset-1.mongo-service:27017/catalogue?replicaSet=rs0&authSource=admin")

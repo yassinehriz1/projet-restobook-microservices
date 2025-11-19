@@ -8,6 +8,11 @@ router.get('/', async (req, res) => {
   res.json(products);
 });
 
+router.get('/current-user', (req, res) => {
+  c
+  res.json({"message" : "hello"});
+});
+
 // POST a new product
 router.post('/', async (req, res) => {
   const product = new Product(req.body);
