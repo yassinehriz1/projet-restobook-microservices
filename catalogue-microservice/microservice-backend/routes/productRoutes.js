@@ -8,10 +8,6 @@ router.get('/', async (req, res) => {
   res.json(products);
 });
 
-router.get('/current-user', (req, res) => {
-  res.json({"message" : "hello"});
-});
-
 
 // GET product by ID
 router.get('/:id', async (req, res) => {
