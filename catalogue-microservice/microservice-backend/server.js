@@ -10,8 +10,7 @@ app.use(cors());
 app.use(express.json());
 app.use('/api/products', productRoutes);
 app.get('/api/current-user', (req, res) => {
-  res.json({ username: getLastConnectedUser() });
-  console.log(getLastConnectedUser())
+  res.json({message : "hello"})
 });
 
 
