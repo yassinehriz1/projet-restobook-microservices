@@ -9,7 +9,6 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/current-user', (req, res) => {
-  c
   res.json({"message" : "hello"});
 });
 
