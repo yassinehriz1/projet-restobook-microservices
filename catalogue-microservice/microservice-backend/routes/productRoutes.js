@@ -12,6 +12,13 @@ router.get('/current-user', (req, res) => {
   res.json({"message" : "hello"});
 });
 
+
+// GET product by ID
+router.get('/:id', async (req, res) => {
+  const product = await Product.findById(req.params.id);
+  res.json(product);
+});
+
 // POST a new product
 router.post('/', async (req, res) => {
   const product = new Product(req.body);
@@ -19,11 +26,7 @@ router.post('/', async (req, res) => {
   res.status(201).json(product);
 });
 
-// GET product by ID
-router.get('/:id', async (req, res) => {
-  const product = await Product.findById(req.params.id);
-  res.json(product);
-});
+
 
 // DELETE product
 router.delete('/:id', async (req, res) => {
