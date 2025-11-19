@@ -10,18 +10,20 @@ const call = client.UserConnectedStream({}); // ouvre le flux
 
 lastConnectedUser = ""
 
-call.on('data', (user) => {
-  console.log('Utilisateur connecté :', user.username);
-  lastConnectedUser = user.username
-});
+function startGRPCClient() {
+  const call = client.UserConnectedStream({}); // ouvre le flux
+  call.on('data', (user) => {
+    console.log('Utilisateur connecté :', user.username);
+    lastConnectedUser = user.username;
+  });
 
-call.on('error', (err) => {
-  console.error('Erreur gRPC:', err);
-});
-
+  call.on('error', (err) => {
+    console.error('Erreur gRPC:', err);
+  });
+}
 
 function getLastConnectedUser() {
   return lastConnectedUser;
 }
 
-module.exports = { getLastConnectedUser }; 
+module.exports = { getLastConnectedUser , startGRPCClient}; 

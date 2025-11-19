@@ -31,22 +31,22 @@ useEffect(() => {
     fetchMenus();
   }, []);
 
-   useEffect(() => {
+  useEffect(() => {
     const fetchUser = async () => {
       try {
         const res = await fetch("http://catalogue.local/api/current-user");
         if (!res.ok) throw new Error("Impossible de récupérer l'utilisateur");
         const data = await res.json();
         setConnectedUser(data.username || "");
+        console.log(connectedUser)
       } catch (err) {
         console.error(err);
       }
     };
-
     fetchUser();
   }, []);
 
-  
+
   // Fonction pour gérer le clic sur une carte
   const handleMenuClick = (menu) => {
     setSelectedMenu(menu);

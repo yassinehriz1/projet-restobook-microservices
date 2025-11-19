@@ -3,18 +3,22 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const productRoutes = require('./routes/productRoutes');
-const { getLastConnectedUser } = require('./grpc-client');
+const { getLastConnectedUser, startGRPCClient } = require('./grpc-client');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 app.use('/api/products', productRoutes);
-app.get('/api/currentUser', (req, res) => {
-  res.send('Hello World!')
-})
+
+app.get('/api/current-user', (req, res) => {
+  res.json({ username: getLastConnectedUser() || "" });
+});
+
 mongoose.connect("mongodb://admin:pass@mongodb-statefulset-0.mongo-service:27017,mongodb-statefulset-1.mongo-service:27017/catalogue?replicaSet=rs0&authSource=admin")
   .then(() => console.log('✅ Connected to MongoDB'))
   .catch(err => console.error('❌ MongoDB connection failed:', err));
+
+startGRPCClient();
 
 app.listen(process.env.PORT, () => {
   console.log(`🚀 Catalogue service running on port ${process.env.PORT}`);
