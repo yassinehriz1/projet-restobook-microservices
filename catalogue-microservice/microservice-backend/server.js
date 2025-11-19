@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use('/api/products', productRoutes);
-app.get('/api/current-user', (req, res) => {
+app.get('/api/currentUser', (req, res) => {
   res.json({ message: "hello" });
 });
 
