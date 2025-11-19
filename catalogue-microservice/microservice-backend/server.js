@@ -3,13 +3,15 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const productRoutes = require('./routes/productRoutes');
+const { getLastConnectedUser } = require('./grpc-client');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 app.use('/api/products', productRoutes);
 app.get('/api/current-user', (req, res) => {
-  res.json({ username: lastConnectedUser });
+  res.json({ username: getLastConnectedUser() });
+  console.log(getLastConnectedUser())
 });
 
 

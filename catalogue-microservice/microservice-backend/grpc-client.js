@@ -8,7 +8,20 @@ const client = new userProto.UserService('user-service:50051', grpc.credentials.
 
 const call = client.UserConnectedStream({}); // ouvre le flux
 
+lastConnectedUser = ""
+
 call.on('data', (user) => {
   console.log('Utilisateur connecté :', user.username);
   lastConnectedUser = user.username
 });
+
+call.on('error', (err) => {
+  console.error('Erreur gRPC:', err);
+});
+
+
+function getLastConnectedUser() {
+  return lastConnectedUser;
+}
+
+module.exports = { getLastConnectedUser }; 
